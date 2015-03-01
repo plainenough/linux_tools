@@ -1,8 +1,8 @@
 /**********************************************************************************
  * This program is based directly on munch.c provided by linuxatemyram.com        *
  * I claim no ownership for the code and have modified it from the original       *
- * version. Use "gcc test.c -o test" to compile. This program just uses up RAM    *
- * until the linux kernel desides to envoke OOM killer on it.                     *
+ * version. Use "gcc memTest.c -o memtest" to compile. This program just uses up  *
+ * RAM until the linux kernel desides to envoke OOM killer on it.                 *
  * *******************************************************************************/
 
 #include <stdlib.h>
