@@ -25,7 +25,7 @@ foreach my $bar (@mac) {
 		if ($counter eq 11 ) { 
 			print "$bar\n";
 		} else {
-			print "$bar-";
+			print "$bar:";
 			$counter2 = 1;
 			$counter += 1;
 		}
