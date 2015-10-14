@@ -39,7 +39,6 @@ $counter = 0;
 
 foreach my $foo (0..15){
 	foreach my $bar (0..15){
-		#print "$counter @choices[$foo]-@choices[$bar] \n";
 		$mac2{$counter} = "$choices[$foo]$choices[$bar]";
 		$counter += 1;
 		
