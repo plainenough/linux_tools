@@ -1,0 +1,12 @@
+##########################################################
+#Settings for xterm as perscribed  by Derrick Walton and##
+#https://wiki.archlinux.org/index.php/Xterm ##############
+##########################################################
+
+
+xterm*termName: xterm-256color
+XTerm*locale: true
+XTerm*metaSendsEscape: true
+XTerm*saveLines: 8192
+
+

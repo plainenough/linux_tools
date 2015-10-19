@@ -11,4 +11,16 @@ cp ~dwalton/linux_tools/load /bin/load && chown root: /bin/load && chmod 755 /bi
 
 #symlink settings
 echo "Creating some symlinks";
-ln -s ~dwalton/linux_tools/.Xresources ~dwalton/.Xresources; chown dwalton: ~dwalton/.Xresources; stat ~dwalton/.Xresources && echo "Symlink for Xresources success" || echo "Symlink for Xresources has failed"; 
+#Symlink xresources
+echo "Creating symlink for .Xresources"; 
+ln -s ~dwalton/linux_tools/.Xresources ~dwalton/.Xresources; chown dwalton: ~dwalton/.Xresources; stat ~dwalton/.Xresources \
+&& echo "Symlink for Xresources success" || echo "Symlink for Xresources has failed"; 
+#Symlink i3config. 
+echo "Creating symlink to i3 config";
+mkdir ~dwalton/.i3; ln -s ~dwalton/linux_tools/config ~dwalton/.i3/config; chown dwalton: ~dwalton/.i3 ~dwalton/.i3/config; stat ~dwalton/.i3 \
+&& echo ".i3 directory exists" && stat ~dwalton/.i3/config && echo ".i3 config symlink is created" || echo "Something went \
+terribly wrong";
+#Symlink for vimrc
+echo "Creating Symlink for vimrc";
+ln -s ~dwalton/linux_tools/.vimrc ~dwalton/.vimrc; chown dwalton: ~dwalton/.vimrc; stat ~dwalton/.vimrc && echo "Vimrc Symlink has been created"\
+|| echo "Vimrc symlink failed"; 
