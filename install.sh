@@ -23,4 +23,8 @@ terribly wrong";
 #Symlink for vimrc
 echo "Creating Symlink for vimrc";
 ln -s ~dwalton/linux_tools/.vimrc ~dwalton/.vimrc; chown dwalton: ~dwalton/.vimrc; stat ~dwalton/.vimrc && echo "Vimrc Symlink has been created"\
-|| echo "Vimrc symlink failed"; 
+|| echo "Vimrc symlink failed";
+#Symlink for bashrc
+echo "Creating Symlink for bashrc";
+ln -s ~dwalton/linux_tools/.bashrc ~dwalton/.bashrc; chown dwalton: ~dwalton/.bashrc; stat ~dwalton/.bashrc && echo "Bashrc Symlink has been created"\
+|| echo "Bashrc failed.";
