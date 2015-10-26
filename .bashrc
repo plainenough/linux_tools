@@ -1,7 +1,11 @@
 #FirstRun 
 if [ "$(who | grep -v tty | wc -l)" == '1' ]; then 
-	./.screenlayout/layout.sh
-	ssh-add ~dwalton/.ssh/id_rsa
+	if [ -f ~dwalton/.screenlayout/layout.sh ]; then
+		./.screenlayout/layout.sh
+	fi
+	if [ "$(ssh-add -L)" == 'The agent has no identities.' ]; then	
+		ssh-add ~dwalton/.ssh/id_rsa
+	fi
 fi
 
 #Aliases 
