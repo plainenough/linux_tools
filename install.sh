@@ -28,3 +28,7 @@ ln -s ~dwalton/linux_tools/.vimrc ~dwalton/.vimrc; chown dwalton: ~dwalton/.vimr
 echo "Creating Symlink for bashrc";
 ln -s ~dwalton/linux_tools/.bashrc ~dwalton/.bashrc; chown dwalton: ~dwalton/.bashrc; stat ~dwalton/.bashrc && echo "Bashrc Symlink has been created"\
 || echo "Bashrc failed.";
+#Symlink for .xinitrc
+echo "Creating Symlink for xinitrc";
+ln -s ~dwalton/linux_tools/.xinitrc ~dwalton/.xinitrc; chown dwalton: ~dwalton/.xinitrc; stat ~dwalton/.xinitrc && echo "xinitrc Symlink has been created"\
+|| echo "xinitrc failed.";
