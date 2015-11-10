@@ -25,8 +25,8 @@ while (my $line = <$file>) {
 	my ( $host, $ip, $user, $pass ) = split / /, $line;
 	print "Connecting to $host\n";
 	#for those of you using ssh keys. 
-	#system("ssh $user\@$ip ' w; hostname; echo ;  free -m; echo ; grep proc /proc/cpuinfo | wc -l; echo ;'");
-	system("sshpass -p'$pass' ssh $user\@$ip ' w; hostname; echo ;  free -m; echo ; grep proc /proc/cpuinfo | wc -l; echo ;'");
+	#`ssh $user\@$ip ' w; hostname; echo ;  free -m; echo ; grep proc /proc/cpuinfo | wc -l; echo ;'`;
+	`sshpass -p'$pass' ssh $user\@$ip ' w; hostname; echo ;  free -m; echo ; grep proc /proc/cpuinfo | wc -l; echo ;'`;
 	print "####################################################################\n";
 }
 
