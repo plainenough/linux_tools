@@ -14,3 +14,5 @@ alias egrep="egrep --color=auto";
 alias ls="ls --color=auto";
 alias ssh="ssh -v";
 
+#Other settings. 
+HISTFILESIZE=100000
