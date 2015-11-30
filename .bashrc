@@ -16,3 +16,9 @@ alias ssh="ssh -v";
 
 #Other settings. 
 HISTFILESIZE=100000
+
+PATH="/home/dwalton/perl5/bin${PATH+:}${PATH}"; export PATH;
+PERL5LIB="/home/dwalton/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/dwalton/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/dwalton/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/dwalton/perl5"; export PERL_MM_OPT;
