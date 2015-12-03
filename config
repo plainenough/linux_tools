@@ -148,7 +148,7 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-bindsym $mod+Shift+s exec "shutdown -h now"
+bindsym $mod+Shift+s exec "systemctl poweroff"
 bindsym $mod+b exec "chromium" 
 bindsym $mod+Shift+b exec "chromium --incognito"
 #bindsym --release $mod+Shift+u exec "pacman -Syu --noconfirm"
