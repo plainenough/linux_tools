@@ -8,6 +8,10 @@ if [ "$(who | grep -v tty | wc -l)" == '1' ]; then
 	fi
 fi
 
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
 #Aliases 
 alias grep="grep --color=auto";
 alias egrep="egrep --color=auto";
