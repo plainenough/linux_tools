@@ -149,8 +149,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 bindsym $mod+Shift+s exec "systemctl poweroff"
-bindsym $mod+b exec "chromium" 
-bindsym $mod+Shift+b exec "chromium --incognito"
+bindsym $mod+b exec "google-chrome" 
+bindsym $mod+Shift+b exec "google-chrome --incognito"
 #bindsym --release $mod+Shift+u exec "pacman -Syu --noconfirm"
 bindsym $mod+Shift+w exec "i3lock"
 bindsym $mod+p --release exec "~dwalton/scripts/Screenshot.sh"
