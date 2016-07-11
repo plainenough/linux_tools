@@ -103,7 +103,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias pecat='sh ~/scripts/APEncryptPE.sh -d ~/scripts/ap-2.5.txt'
-alias fixscreen='bash ~/.screenshot/fix.sh'
+alias fixscreen='bash ~/.screenlayout/fix.sh'
 
 # -> Prevents accidentally clobbering files.
 alias mkdir='mkdir -p'
