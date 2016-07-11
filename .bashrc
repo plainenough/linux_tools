@@ -103,15 +103,16 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias pecat='sh ~/scripts/APEncryptPE.sh -d ~/scripts/ap-2.5.txt'
+alias fixscreen='bash ~/.screenshot/fix.sh'
 
 # -> Prevents accidentally clobbering files.
 alias mkdir='mkdir -p'
-
 alias h='history'
 alias j='jobs -l'
 alias which='type -a'
 alias ..='cd ..'
 alias grep='grep --color=auto'
+
 # Pretty-print of some PATH variables:
 alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
