@@ -29,6 +29,11 @@ shopt -s checkwinsize
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
 
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+      eval `ssh-agent -s`
+fi
+
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -103,7 +108,8 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias pecat='sh ~/scripts/APEncryptPE.sh -d ~/scripts/ap-2.5.txt'
-alias fixscreen='bash ~/.screenlayout/fix.sh'
+alias multiscreen='xrandr --output DisplayPort-1 --mode 2560x1440 --pos 0x0 --rotate normal --output DisplayPort-0 --mode 2560x1440 --pos 2560x0 --rotate normal --output eDP --primary --mode 1400x1050 --pos 5120x0 --rotate normal --output HDMI-0 --off'
+alias singlescreen='xrandr --output DisplayPort-1 --off --output DisplayPort-0 --off --output eDP --primary --mode 1920x1200 --pos 0x0 --rotate normal --output HDMI-0 --off'
 
 # -> Prevents accidentally clobbering files.
 alias mkdir='mkdir -p'
@@ -112,6 +118,7 @@ alias j='jobs -l'
 alias which='type -a'
 alias ..='cd ..'
 alias grep='grep --color=auto'
+alias meagent='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
 
 # Pretty-print of some PATH variables:
 alias path='echo -e ${PATH//:/\\n}'
@@ -151,7 +158,12 @@ fi
 }
 
 function benc {
-ssh atomizer@slc3enc$1.slc3.movenetworks.com
+host b-gp2-enc-$1.b.movetv.com > /dev/null 2>&1
+if [  $? -eq 0 ]; then
+    ssh atomizer@b-gp2-enc-$1.b.movetv.com
+else
+    ssh atomizer@slc3enc$1.slc3.movenetworks.com
+fi
 }
 
 function cenc {

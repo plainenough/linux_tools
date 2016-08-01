@@ -148,13 +148,13 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-bindsym $mod+Shift+s exec "systemctl poweroff"
+bindsym $mod+Shift+Delete exec "shutdown -h now"
 bindsym $mod+b exec "google-chrome" 
 bindsym $mod+Shift+b exec "google-chrome --incognito"
 #bindsym --release $mod+Shift+u exec "pacman -Syu --noconfirm"
 bindsym $mod+Shift+w exec "i3lock"
 bindsym $mod+p --release exec "~dwalton/scripts/Screenshot.sh"
-
+#bindsym $mod+Shift+/ exec 'eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
