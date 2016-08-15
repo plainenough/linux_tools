@@ -154,7 +154,7 @@ bindsym $mod+Shift+b exec "google-chrome --incognito"
 #bindsym --release $mod+Shift+u exec "pacman -Syu --noconfirm"
 bindsym $mod+Shift+w exec "i3lock"
 bindsym $mod+p --release exec "~dwalton/scripts/Screenshot.sh"
-#bindsym $mod+Shift+/ exec 'eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
+#bindsym $mod+Shift+backslash --release exec 'cd ~dwalton/derrick.walton/ && sudo openvpn --config derrick.walton.ovpn'
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
