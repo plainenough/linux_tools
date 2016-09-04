@@ -125,7 +125,8 @@ alias ssh="ssh -l administrator -v"
 # Pretty-print of some PATH variables:
 alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
-
+alias bsalt="ssh -l ops b-gp2-salt-1.b.movetv.com"
+alias salt="ssh -l ops p-sv1-salt-1.p.movetv.com"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
