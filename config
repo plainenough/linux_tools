@@ -152,7 +152,7 @@ bindsym $mod+Shift+Delete exec "shutdown -h now"
 bindsym $mod+b exec "google-chrome" 
 bindsym $mod+Shift+b exec "google-chrome --incognito"
 #bindsym --release $mod+Shift+u exec "pacman -Syu --noconfirm"
-bindsym $mod+Shift+w exec "i3lock"
+bindsym $mod+Shift+w exec "/home/dwalton/linux_tools/lock.sh"
 bindsym $mod+p --release exec "~dwalton/scripts/Screenshot.sh"
 #bindsym $mod+Shift+backslash --release exec 'cd ~dwalton/derrick.walton/ && sudo openvpn --config derrick.walton.ovpn'
 # Start i3bar to display a workspace bar (plus the system information i3status
