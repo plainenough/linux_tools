@@ -110,6 +110,7 @@ alias mv='mv -i'
 alias pecat='sh ~/scripts/APEncryptPE.sh -d ~/scripts/ap-2.5.txt'
 alias multiscreen='xrandr --output DisplayPort-1 --mode 2560x1440 --pos 0x0 --rotate normal --output DisplayPort-0 --mode 2560x1440 --pos 2560x0 --rotate normal --output eDP --primary --mode 1400x1050 --pos 5120x0 --rotate normal --output HDMI-0 --off'
 alias singlescreen='xrandr --output DisplayPort-1 --off --output DisplayPort-0 --off --output eDP --primary --mode 1920x1200 --pos 0x0 --rotate normal --output HDMI-0 --off'
+alias bgfix='bash /home/dwalton/linux_tools/bg.sh'
 alias packetcapture='ssh dwalton@10.100.8.5'
 
 # -> Prevents accidentally clobbering files.
