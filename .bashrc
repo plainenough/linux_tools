@@ -112,6 +112,7 @@ alias multiscreen='xrandr --output DisplayPort-1 --mode 2560x1440 --pos 0x0 --ro
 alias singlescreen='xrandr --output DisplayPort-1 --off --output DisplayPort-0 --off --output eDP --primary --mode 1920x1200 --pos 0x0 --rotate normal --output HDMI-0 --off'
 alias bgfix='bash /home/dwalton/linux_tools/bg.sh'
 alias packetcapture='ssh dwalton@10.100.8.5'
+alias ls='ls -G'
 
 # -> Prevents accidentally clobbering files.
 alias mkdir='mkdir -p'
