@@ -157,17 +157,12 @@ function enc {
 if [ "$1" = "111" ]; then
     ssh ops@gil1enc4333.gil1.movenetworks.com
 else
-    ssh atomizer@gil1enc$1.gil1.movenetworks.com
+    ssh ops@gil1enc$1.gil1.movenetworks.com
 fi
 }
 
 function benc {
-host b-gp2-enc-$1.b.movetv.com > /dev/null 2>&1
-if [  $? -eq 0 ]; then
-    ssh atomizer@b-gp2-enc-$1.b.movetv.com
-else
-    ssh atomizer@slc3enc$1.slc3.movenetworks.com
-fi
+ssh ops@b-gp2-enc-$1.b.movetv.com
 }
 
 function cenc {
