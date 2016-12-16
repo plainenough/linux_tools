@@ -122,7 +122,7 @@ alias which='type -a'
 alias ..='cd ..'
 alias grep='grep --color=auto'
 alias meagent='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
-alias ssh="ssh -l administrator -v"
+alias ssh="ssh -l ops -v"
 
 # Pretty-print of some PATH variables:
 alias path='echo -e ${PATH//:/\\n}'
