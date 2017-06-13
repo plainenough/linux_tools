@@ -2,7 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/dwalton/scripts/custom-scripts
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/dwalton/scripts/custom-scripts:/Users/dwalton/.gem/ruby/2.0.0/bin
 
 # If not running interactively, don't do anything
 case $- in
@@ -95,8 +95,6 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias vnc='vinagre'
-alias sling='/home/dwalton/genymotion/genymotion/genymotion'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -113,8 +111,6 @@ alias singlescreen='xrandr --output DisplayPort-1 --off --output DisplayPort-0 -
 alias bgfix='bash /home/dwalton/linux_tools/bg.sh'
 alias packetcapture='ssh dwalton@10.100.8.5'
 alias ls='ls -G'
-
-# -> Prevents accidentally clobbering files.
 alias mkdir='mkdir -p'
 alias h='history'
 alias j='jobs -l'
@@ -122,13 +118,15 @@ alias which='type -a'
 alias ..='cd ..'
 alias grep='grep --color=auto'
 alias meagent='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
-alias ssh="ssh -l ops -v"
+alias ssh="ssh -v"
 
 # Pretty-print of some PATH variables:
 alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
-alias bsalt="ssh -l ops b-gp2-salt-1.b.movetv.com"
-alias salt="ssh -l ops p-sv1-salt-1.p.movetv.com"
+alias bsalt="ssh b-gp2-salt-1.imovetv.com"
+alias salt="ssh p-gp2-salt-1.imovetv.com"
+alias qsalt="ssh q-gp2-salt-1.imovetv.com"
+alias dsalt="ssh d-gp2-salt-1.imovetv.com"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -167,10 +165,10 @@ ssh ops@b-gp2-enc-$1.b.movetv.com
 }
 
 function cenc {
-echo "cssh atomizer@gil1enc{$1..$2}.gil1.movenetworks.com"|bash -x
+echo "csshx atomizer@gil1enc{$1..$2}.gil1.movenetworks.com"|bash -x
 }
 
 function bcenc {
-echo "cssh atomizer@slc3enc{$1..$2}.slc3.movenetworks.com"|bash -x
+echo "csshx atomizer@slc3enc{$1..$2}.slc3.movenetworks.com"|bash -x
 }
 
