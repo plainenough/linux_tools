@@ -27,7 +27,10 @@ ln -s ~dwalton/linux_tools/.vimrc ~dwalton/.vimrc; chown dwalton: ~dwalton/.vimr
 #Symlink for bashrc
 echo "Creating Symlink for bashrc";
 ln -s ~dwalton/linux_tools/.bashrc ~dwalton/.bashrc; chown dwalton: ~dwalton/.bashrc; stat ~dwalton/.bashrc && echo "Bashrc Symlink has been created"\
-|| echo "Bashrc failed.";
+|| echo "Bashrc symlink failed.";
+#Install lock screen. 
+mkdir -p /tmp/scripts/; cd /tmp/scripts/; git clone https://github.com/meskarune/i3lock-fancy.git; cd i3lock-fancy/; chmod -R 755 ./icons && \
+chmod 755 ./lock &&  cp ./lock /usr/local/bin/ && cp -r ./icons /usr/local/bin/ && echo "lock has been created" || echo "lock install failed.";
 #Symlink for .xinitrc
 #echo "Creating Symlink for xinitrc";
 #ln -s ~dwalton/linux_tools/.xinitrc ~dwalton/.xinitrc; chown dwalton: ~dwalton/.xinitrc; stat ~dwalton/.xinitrc && echo "xinitrc Symlink has been created"\

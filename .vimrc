@@ -1,6 +1,3 @@
-" Configuration file for Vi Improved, save as ~/.vimrc to use.
-" Written on 2014-07-16 by Miko Bartnicki <mikobartnicki@gmail.com>.
-
 " use Vim mode instead of pure Vi, it must be the first instruction
 set nocompatible
 
@@ -25,7 +22,7 @@ set tabstop=4 " set tabulator length to 8 columns
 " set textwidth=80 " wrap lines automatically at 80th column
 
 " search settings
-set hlsearch " highlight search results
+" set hlsearch " highlight search results
 set ignorecase " do case insensitive search...
 set incsearch " do incremental search
 set smartcase " ...unless capital letters are used
@@ -37,7 +34,7 @@ filetype indent on " automatically indent code
 
 " syntax highlighting
 set background=dark " dark background for console
-syntax enable " enable syntax highlighting
+syntax on " enable syntax highlighting
 
 " characters for displaying non-printable characters
 set listchars=eol:$,tab:>-,trail:.,nbsp:_,extends:+,precedes:+
