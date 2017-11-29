@@ -2,3 +2,4 @@ xterm*termName: xterm-256color
 XTerm*locale: true
 XTerm*metaSendsEscape: true
 XTerm*saveLines: 8192
+Xcursor.size: 10
