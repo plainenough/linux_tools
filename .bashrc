@@ -4,6 +4,8 @@
 
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
 export CLICOLOR=1
+#added while testing stuff.
+
 export GPG_TTY=$(tty)
 
 # If not running interactively, don't do anything
