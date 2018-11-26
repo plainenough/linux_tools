@@ -2,7 +2,9 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/dwalton/scripts/custom-scripts:/Users/dwalton/.gem/ruby/2.0.0/bin
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+export CLICOLOR=1
+export GPG_TTY=$(tty)
 
 # If not running interactively, don't do anything
 case $- in
@@ -68,7 +70,7 @@ if [ "$color_prompt" = yes ]; then
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
-unset color_prompt force_color_prompt
+#unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -82,7 +84,6 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -96,10 +97,10 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 
 # some more ls aliases
 alias ll='ls -alF'
+#alias gpg='gpg2'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias ls='ls --color=auto'
 alias la='ls -A'
 alias l='ls -CF'
 #-------------------
@@ -109,10 +110,6 @@ alias l='ls -CF'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-alias pecat='sh ~/scripts/APEncryptPE.sh -d ~/scripts/ap-2.5.txt'
-alias multiscreen='xrandr --output DisplayPort-1 --mode 2560x1440 --pos 0x0 --rotate normal --output DisplayPort-0 --mode 2560x1440 --pos 2560x0 --rotate normal --output eDP --primary --mode 1400x1050 --pos 5120x0 --rotate normal --output HDMI-0 --off'
-alias singlescreen='xrandr --output DisplayPort-1 --off --output DisplayPort-0 --off --output eDP --primary --mode 1920x1200 --pos 0x0 --rotate normal --output HDMI-0 --off'
-alias bgfix='bash /home/dwalton/linux_tools/bg.sh'
 alias packetcapture='ssh dwalton@10.100.8.5'
 alias mkdir='mkdir -p'
 alias h='history'
@@ -126,10 +123,6 @@ alias ssh="ssh -v"
 # Pretty-print of some PATH variables:
 alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
-alias bsalt="ssh b-gp2-salt-1.imovetv.com"
-alias salt="ssh p-gp2-salt-1.imovetv.com"
-alias qsalt="ssh q-gp2-salt-1.imovetv.com"
-alias dsalt="ssh d-gp2-salt-1.imovetv.com"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -155,23 +148,4 @@ if ! shopt -oq posix; then
   fi
 fi
 
-function enc {
-if [ "$1" = "111" ]; then
-    ssh ops@gil1enc4333.gil1.movenetworks.com
-else
-    ssh ops@gil1enc$1.gil1.movenetworks.com
-fi
-}
-
-function benc {
-ssh ops@b-gp2-enc-$1.b.movetv.com
-}
-
-function cenc {
-echo "csshx atomizer@gil1enc{$1..$2}.gil1.movenetworks.com"|bash -x
-}
-
-function bcenc {
-echo "csshx atomizer@slc3enc{$1..$2}.slc3.movenetworks.com"|bash -x
-}
 
