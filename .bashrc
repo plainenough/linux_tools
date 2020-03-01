@@ -97,13 +97,10 @@ fi
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
 #alias gpg='gpg2'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias la='ls -A'
-alias l='ls -CF'
 #-------------------
 # Personnal Aliases
 #-------------------
@@ -118,8 +115,8 @@ alias j='jobs -l'
 alias which='type -a'
 alias ..='cd ..'
 alias grep='grep --color=auto'
-alias meagent='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
 alias ssh="ssh -v"
+alias ls="ls --color=always"
 
 # Pretty-print of some PATH variables:
 alias path='echo -e ${PATH//:/\\n}'
