@@ -154,7 +154,7 @@ bindsym $mod+Shift+Delete exec "shutdown -h now"
 bindsym $mod+b exec "firefox" 
 bindsym $mod+Shift+b exec "firefox --private-window"
 #bindsym --release $mod+Shift+u exec "pacman -Syu --noconfirm"
-bindsym $mod+Shift+w exec "/usr/local/bin/lock"
+bindsym $mod+Shift+w exec "i3lock-fancy"
 bindsym $mod+p --release exec "~dwalton/scripts/Screenshot.sh"
 #bindsym $mod+Shift+backslash --release exec 'cd ~dwalton/derrick.walton/ && sudo openvpn --config derrick.walton.ovpn'
 # Start i3bar to display a workspace bar (plus the system information i3status
