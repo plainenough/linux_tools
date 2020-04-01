@@ -1,8 +1,9 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
+export ANDROID_HOME=/home/dwalton/android
 
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:$ANDROID_HOME/tools:$ANDROID_HOME/tools/lib:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:/home/dwalton/.local/bin"
 export CLICOLOR=1
 source ~/.otherVars
 export GPG_TTY=$(tty)
@@ -147,3 +148,4 @@ if ! shopt -oq posix; then
 fi
 
 
+export GPG_TTY=/dev/pts/0
