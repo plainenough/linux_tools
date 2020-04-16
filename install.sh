@@ -4,7 +4,25 @@
 ## This script is to install all of the stuff that I have put on ###
 ## my repo to my current machines. #################################
 ####################################################################
-
+echo "Install all of my packages needed for stuff"
+apt-get install -yqq \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common \
+    build-essential \
+    openvpn \
+    git
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+apt-get update -qq
+apt-get install -yqq docker-ce
+curl -L https://github.com/docker/compose/releases/download/1.25.5/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
 #load script 
 echo "Installing Load script";
 cp ~dwalton/linux_tools/load /usr/local/bin/load && chown root: /usr/local/bin/load && chmod 755 /usr/local/bin/load && echo "Success" || echo "failed";
