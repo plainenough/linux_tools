@@ -13,7 +13,9 @@ apt-get install -yqq \
     software-properties-common \
     build-essential \
     openvpn \
-    git
+    git \
+    i3lock-fancy \
+    vim
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
@@ -47,6 +49,3 @@ echo "Creating Symlink for bashrc";
 rm -f ~dwalton/.bashrc;
 ln -s ~dwalton/linux_tools/.bashrc ~dwalton/.bashrc; chown dwalton: ~dwalton/.bashrc; stat ~dwalton/.bashrc && echo "Bashrc Symlink has been created"\
 || echo "Bashrc symlink failed.";
-#Install lock screen. 
-mkdir -p /tmp/scripts/; cd /tmp/scripts/; git clone https://github.com/meskarune/i3lock-fancy.git; cd i3lock-fancy/; make install && \
-echo "lock has been created" || echo "lock install failed."; rm -rf /tmp/scripts;
