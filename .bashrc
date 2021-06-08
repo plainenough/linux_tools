@@ -3,7 +3,7 @@
 # for examples
 export ANDROID_HOME=/home/dwalton/android
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:$ANDROID_HOME/tools:$ANDROID_HOME/tools/lib:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:/home/dwalton/.local/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:$HOME/.istioctl/bin:/home/dwalton/.local/bin"
 export CLICOLOR=1
 source ~/.otherVars
 export GPG_TTY=$(tty)
