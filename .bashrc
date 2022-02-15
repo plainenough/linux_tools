@@ -1,9 +1,7 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
-export ANDROID_HOME=/home/dwalton/android
-
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:$HOME/.istioctl/bin:/home/dwalton/.local/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/snap/bin:$HOME/.istioctl/bin:/home/dwalton/.local/bin:$HOME/.pyenv/bin:$HOME/.poetry/bin:$PATH"
 export CLICOLOR=1
 source ~/.otherVars
 export GPG_TTY=$(tty)
@@ -109,9 +107,7 @@ alias egrep='egrep --color=auto'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-alias packetcapture='ssh dwalton@10.100.8.5'
 alias mkdir='mkdir -p'
-alias h='history'
 alias j='jobs -l'
 alias which='type -a'
 alias ..='cd ..'
@@ -149,3 +145,7 @@ fi
 
 
 export GPG_TTY=/dev/pts/0
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
