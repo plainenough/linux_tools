@@ -1,51 +1,97 @@
 #!/bin/bash
 
 ####################################################################
-## This script is to install all of the stuff that I have put on ###
-## my repo to my current machines. #################################
 ####################################################################
-echo "Install all of my packages needed for stuff"
-apt-get install -yqq \
+# This script will install/configure everything needed to setup my #
+# Workstation on Ubuntu 20.04 LTS.                                 #
+####################################################################
+####################################################################
+
+#Create the glorious tmp dir that I throw everything in.
+mkdir ~/tmp/
+CO='\033[0m'
+CY='\033[1;33m'
+
+echo -e "$CY Install all of my packages needed for stuff $CO"
+sudo apt-get install -yqq \
     apt-transport-https \
+    build-essential \
     ca-certificates \
     curl \
-    gnupg-agent \
-    software-properties-common \
-    build-essential \
-    openvpn \
     git \
+    gnupg-agent \
     i3lock-fancy \
-    vim
+    openvpn \
+    software-properties-common \
+    vim \
+    xautolock
+
+# Begin installing docker. This is a must.
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-add-apt-repository \
+
+sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
-apt-get update -qq
-apt-get install -yqq docker-ce
-curl -L https://github.com/docker/compose/releases/download/1.25.5/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
-#load script 
-echo "Installing Load script";
-cp ~dwalton/linux_tools/load /usr/local/bin/load && chown root: /usr/local/bin/load && chmod 755 /usr/local/bin/load && echo "Success" || echo "failed";
-#symlink settings
-echo "Creating some symlinks";
-#Symlink xresources
-echo "Creating symlink for .Xresources";
-rm -f ~dwalton/.Xresources;
-ln -s ~dwalton/linux_tools/.Xresources ~dwalton/.Xresources; chown dwalton: ~dwalton/.Xresources; stat ~dwalton/.Xresources \
-&& echo "Symlink for Xresources success" || echo "Symlink for Xresources has failed"; 
-#Symlink i3config. 
-echo "Creating symlink to i3 config";
-mkdir ~dwalton/.i3; ln -s ~dwalton/linux_tools/config ~dwalton/.i3/config; chown dwalton: ~dwalton/.i3 ~dwalton/.i3/config; stat ~dwalton/.i3 \
-&& echo ".i3 directory exists" && stat ~dwalton/.i3/config && echo ".i3 config symlink is created" || echo "Something went \
-terribly wrong";
-#Symlink for vimrc
-echo "Creating Symlink for vimrc";
-ln -s ~dwalton/linux_tools/.vimrc ~dwalton/.vimrc; chown dwalton: ~dwalton/.vimrc; stat ~dwalton/.vimrc && echo "Vimrc Symlink has been created"\
-|| echo "Vimrc symlink failed";
-#Symlink for bashrc
-echo "Creating Symlink for bashrc";
-rm -f ~dwalton/.bashrc;
-ln -s ~dwalton/linux_tools/.bashrc ~dwalton/.bashrc; chown dwalton: ~dwalton/.bashrc; stat ~dwalton/.bashrc && echo "Bashrc Symlink has been created"\
-|| echo "Bashrc symlink failed.";
+
+sudo apt-get update -qq
+sudo apt-get install -yqq docker-ce
+
+# Update user groups to include docker
+MYUSER=$USER
+sudo usermod -a -G docker $MYUSER
+
+# Begin installing docker-compose
+curl -L https://github.com/docker/compose/releases/download/1.25.5/docker-compose-`uname -s`-`uname -m` -o ~/tmp/docker-compose && \
+sudo cp ~/tmp/docker-compose /usr/local/bin/docker-compose \
+&& sudo chmod +x /usr/local/bin/docker-compose
+
+# Install load script
+echo -e "$CY Installing Load script $CO"
+sudo cp ~/linux_tools/load /usr/local/bin/load \
+&& sudo chown root: /usr/local/bin/load \
+&& sudo chmod 755 /usr/local/bin/load \
+&& echo "Success" || echo "failed";
+
+# Install symlink settings
+echo -e "$CY Creating some symlinks $CO"
+
+# Symlink xresources
+echo -e "\e[31 Creating symlink for .Xresources \e[0m";
+rm -f ~/.Xresources;
+ln -s ~/linux_tools/.Xresources ~/.Xresources;
+sudo chown $MYUSER: ~/.Xresources;
+stat ~/.Xresources \
+&& echo "Symlink for Xresources success" || echo "Symlink for Xresources has failed"
+
+# Symlink i3config.
+echo -e "$CY Creating symlink to i3 config $CO"
+mkdir ~/.i3;
+ln -s ~/linux_tools/config ~/.i3/config;
+sudo chown $MYUSER: ~/.i3 ~/.i3/config;
+stat ~/.i3 \
+&& echo ".i3 directory exists" \
+&& stat ~/.i3/config \
+&& echo ".i3 config symlink is created" \
+|| echo "Something went terribly wrong"
+
+# Symlink for vimrc
+echo -e "$CY Creating Symlink for vimrc $CO"
+ln -s ~/linux_tools/.vimrc ~/.vimrc;
+sudo chown $MYUSER: ~/.vimrc;
+stat ~/.vimrc && echo "Vimrc Symlink has been created"\
+|| echo "Vimrc symlink failed"
+
+# Install crontab
+echo -e "$CY Installing user provided crontab $CO"
+crontab crontab &&  echo "Succesfully installed crontab!" \
+|| echo "Crontab install failed."
+
+# Symlink for bashrc
+echo -e "$CY Creating Symlink for bashrc $CO"
+rm -f ~/.bashrc;
+ln -s ~/linux_tools/.bashrc ~/.bashrc;
+sudo chown $MYUSER: ~/.bashrc;
+stat ~/.bashrc \
+&& echo "Bashrc Symlink has been created" \
+|| echo "Bashrc symlink failed."

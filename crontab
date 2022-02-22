@@ -1,0 +1,1 @@
+#*/2 * * * * /bin/bash xautolock -detectsleep -time 9 -locker i3lock-fancy
