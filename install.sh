@@ -56,6 +56,17 @@ sudo cp ~/linux_tools/load /usr/local/bin/load \
 && sudo chmod 755 /usr/local/bin/load \
 && echo "Success" || echo "failed";
 
+# Install AWS CLI v2
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+rm -rf ./aws
+
+# Install kubectl
+curl -LO https://dl.k8s.io/release/v1.24.0/bin/linux/amd64/kubectl
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/kubectl
+
 # Install symlink settings
 echo -e "$CY Creating some symlinks $CO"
 
