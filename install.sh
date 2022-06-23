@@ -20,6 +20,7 @@ sudo apt-get install -yqq \
     curl \
     git \
     gnupg-agent \
+    i3 \
     i3lock-fancy \
     openvpn \
     software-properties-common \
