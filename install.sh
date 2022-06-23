@@ -60,10 +60,10 @@ sudo cp ~/linux_tools/load /usr/local/bin/load \
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
-rm -rf ./aws
+rm -rf ./aws awscliv2.zip
 
 # Install kubectl
-curl -LO https://dl.k8s.io/release/v1.24.0/bin/linux/amd64/kubectl
+curl -LO https://dl.k8s.io/release/v1.23.6/bin/linux/amd64/kubectl
 chmod +x kubectl
 sudo mv kubectl /usr/local/bin/kubectl
 
