@@ -37,6 +37,9 @@ sudo add-apt-repository \
    $(lsb_release -cs) \
    stable"
 
+# Set default editor to vim
+sudo ln -sf /usr/bin/vim.basic /etc/alternatives/editor 
+
 sudo apt-get update -qq
 sudo apt-get install -yqq docker-ce
 
