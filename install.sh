@@ -13,6 +13,8 @@ CO='\033[0m'
 CY='\033[1;33m'
 
 echo -e "$CY Install all of my packages needed for stuff $CO"
+sudo apt-get update
+sudo apt-get upgrade -yqq
 sudo apt-get install -yqq \
     apt-transport-https \
     build-essential \
