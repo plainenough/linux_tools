@@ -1,0 +1,6 @@
+# Update package list and install vim. 
+apt update -y
+apt install -y vim
+# Run some other setup utils.
+/mnt/tools/qualiti-utils/setup-npmrc.sh
+/mnt/tools/qualiti-utils/setup-aws.sh
