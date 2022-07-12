@@ -13,6 +13,8 @@ CO='\033[0m'
 CY='\033[1;33m'
 
 echo -e "$CY Install all of my packages needed for stuff $CO"
+sudo apt-get update
+sudo apt-get upgrade -yqq
 sudo apt-get install -yqq \
     apt-transport-https \
     build-essential \
@@ -20,6 +22,7 @@ sudo apt-get install -yqq \
     curl \
     git \
     gnupg-agent \
+    i3 \
     i3lock-fancy \
     openvpn \
     software-properties-common \
@@ -33,6 +36,9 @@ sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
+
+# Set default editor to vim
+sudo ln -sf /usr/bin/vim.basic /etc/alternatives/editor 
 
 sudo apt-get update -qq
 sudo apt-get install -yqq docker-ce
@@ -52,6 +58,17 @@ sudo cp ~/linux_tools/load /usr/local/bin/load \
 && sudo chown root: /usr/local/bin/load \
 && sudo chmod 755 /usr/local/bin/load \
 && echo "Success" || echo "failed";
+
+# Install AWS CLI v2
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+rm -rf ./aws awscliv2.zip
+
+# Install kubectl
+curl -LO https://dl.k8s.io/release/v1.23.6/bin/linux/amd64/kubectl
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/kubectl
 
 # Install symlink settings
 echo -e "$CY Creating some symlinks $CO"
