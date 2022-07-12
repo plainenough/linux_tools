@@ -87,8 +87,8 @@ alias ls="ls --color=always"
 alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 # Custom alias to load docker verions of application to prevent the need to install software.
-alias dnpm="env | egrep -v 'HOME|USER' > $HOME/tmp/.env && docker run -it --entrypoint='' -w /home/node/ -e HOME=/home/node --env-file=$HOME/tmp/.env -v $PWD:/mnt -v $HOME/linux_tools/.dockerbashrc:/home/node/.bashrc node:16 bash"
-alias dpython="env | egrep -v 'HOME|USER' > $HOME/tmp/.env && docker run -it --entrypoint='' --env-file=$HOME/tmp/.env -v $PWD:/mnt -v $HOME/linux_tools/.dockerbashrc:/root/.bashrc python:3.8-buster bash"
+alias dnpm="env | egrep -v 'HOME|USER' > $HOME/tmp/.env && docker run -it --entrypoint='' -w /mnt/ -e HOME=/home/node --env-file=$HOME/tmp/.env -v $PWD:/mnt -v $HOME/linux_tools/.dockerbashrc:/home/node/.bashrc node:16 bash"
+alias dpython="env | egrep -v 'HOME|USER' > $HOME/tmp/.env && docker run -it --entrypoint='' -w /mnt/ --env-file=$HOME/tmp/.env -v $PWD:/mnt -v $HOME/linux_tools/.dockerbashrc:/root/.bashrc python:3.8-buster bash"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
