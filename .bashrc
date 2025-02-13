@@ -86,18 +86,10 @@ alias ssh="ssh -v"
 alias ls="ls --color=always"
 alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
-# Custom alias to load docker verions of application to prevent the need to install software.
-alias dnpm="env | egrep -v 'HOME|USER' > $HOME/tmp/.env && docker run -it --entrypoint='' -w /mnt/ -e HOME=/home/node --env-file=$HOME/tmp/.env -v $PWD:/mnt -v $HOME/linux_tools/.dockerbashrc:/home/node/.bashrc node:16 bash"
-alias dpython="env | egrep -v 'HOME|USER' > $HOME/tmp/.env && docker run -it --entrypoint='' -w /mnt/ --env-file=$HOME/tmp/.env -v $PWD:/mnt -v $HOME/linux_tools/.dockerbashrc:/root/.bashrc python:3.8-buster bash"
+alias tg="terragrunt"
+alias tf="terraform"
+alias kc="kubectl"
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
@@ -115,7 +107,3 @@ if ! shopt -oq posix; then
 fi
 
 export GPG_TTY=/dev/pts/0
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
