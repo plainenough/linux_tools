@@ -18,8 +18,8 @@ font pango:monospace 8
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
-exec i3-msg 'workspace 1; workspace 6; workspace 2; workspace 1;' 
-exec_always --no-startup-id xautolock -detectsleep -time 9 -locker "i3lock-fancy"
+#exec i3-msg 'workspace 1; workspace 6; workspace 2; workspace 1;'
+#exec_always --no-startup-id xautolock -detectsleep -time 9 -locker "i3lock-fancy"
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -153,7 +153,8 @@ bindsym $mod+Shift+| mode "resize"
 bindsym $mod+Shift+Delete exec "shutdown -h now"
 bindsym $mod+b exec "firefox" 
 bindsym $mod+Shift+b exec "firefox --private-window"
-#bindsym --release $mod+Shift+u exec "pacman -Syu --noconfirm"
+bindsym --release $mod+Shift+u exec "xinput list | grep 'ELAN0305:00 04F3:31FD Touchpad' | cut -d= -f2 | awk '{print $1}' | xargs -i xinput --disable {}"
+bindsym --release $mod+Shift+m "xinput list | grep 'ELAN0305:00 04F3:31FD Touchpad' | cut -d= -f2 | awk '{print $1}' | xargs -i xinput --enable {}"
 bindsym $mod+Shift+w exec "i3lock-fancy"
 bindsym $mod+p --release exec "/usr/bin/gnome-screenshot -a"
 #bindsym $mod+Shift+backslash --release exec 'cd ~dwalton/derrick.walton/ && sudo openvpn --config derrick.walton.ovpn'
