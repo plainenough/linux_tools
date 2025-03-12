@@ -112,3 +112,6 @@ sudo chown $MYUSER: ~/.bashrc;
 stat ~/.bashrc \
 && echo "Bashrc Symlink has been created" \
 || echo "Bashrc symlink failed."
+
+# This may warrant its own config eventually
+git config --global push.autoSetupRemote true
