@@ -154,7 +154,7 @@ bindsym $mod+Shift+Delete exec "shutdown -h now"
 bindsym $mod+b exec "firefox" 
 bindsym $mod+Shift+b exec "firefox --private-window"
 bindsym --release $mod+Shift+u exec "xinput list | grep 'ELAN0305:00 04F3:31FD Touchpad' | cut -d= -f2 | awk '{print $1}' | xargs -i xinput --disable {}"
-bindsym --release $mod+Shift+m "xinput list | grep 'ELAN0305:00 04F3:31FD Touchpad' | cut -d= -f2 | awk '{print $1}' | xargs -i xinput --enable {}"
+bindsym --release $mod+Shift+m exec "xinput list | grep 'ELAN0305:00 04F3:31FD Touchpad' | cut -d= -f2 | awk '{print $1}' | xargs -i xinput --enable {}"
 bindsym $mod+Shift+w exec "i3lock-fancy"
 bindsym $mod+p --release exec "/usr/bin/gnome-screenshot -a"
 #bindsym $mod+Shift+backslash --release exec 'cd ~dwalton/derrick.walton/ && sudo openvpn --config derrick.walton.ovpn'

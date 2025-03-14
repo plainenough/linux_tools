@@ -83,12 +83,13 @@ stat ~/.Xresources \
 
 # Symlink i3config.
 echo -e "$CY Creating symlink to i3 config $CO"
-mkdir ~/.i3;
-ln -s ~/linux_tools/config ~/.i3/config;
+mkdir ~/.config/i3;
+rm -rf ~/.config/i3/config
+ln -s ~/linux_tools/config ~/.config/i3/config;
 sudo chown $MYUSER: ~/.i3 ~/.i3/config;
-stat ~/.i3 \
+stat ~/.config/i3 \
 && echo ".i3 directory exists" \
-&& stat ~/.i3/config \
+&& stat ~/.config/i3/config \
 && echo ".i3 config symlink is created" \
 || echo "Something went terribly wrong"
 
