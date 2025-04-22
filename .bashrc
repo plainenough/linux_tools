@@ -1,71 +1,97 @@
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/snap/bin:$HOME/.istioctl/bin:/home/dwalton/.local/bin:$HOME/.pyenv/bin:$HOME/.poetry/bin:$PATH"
+
+# --------------------------
+# PATH and Environment Setup
+# --------------------------
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:$HOME/.istioctl/bin:$HOME/.local/bin:$HOME/.pyenv/bin:$HOME/.poetry/bin:$PATH"
 export CLICOLOR=1
-source ~/.otherVars
+[ -f ~/.otherVars ] && source ~/.otherVars
 export GPG_TTY=$(tty)
 
-# If not running interactively, don't do anything
+# --------------------------
+# SSH Agent Auto-Reuse
+# --------------------------
+agent_env_file="$HOME/.ssh/agent.env"
+
+if [ -f "$agent_env_file" ]; then
+    source "$agent_env_file" > /dev/null 2>&1
+    if ! kill -0 "$SSH_AGENT_PID" 2>/dev/null; then
+        echo "Stale SSH agent. Removing $agent_env_file."
+        rm -f "$agent_env_file"
+    fi
+fi
+
+if [ ! -f "$agent_env_file" ]; then
+    echo "Starting new SSH agent..."
+    ssh-agent > "$agent_env_file"
+    chmod 600 "$agent_env_file"
+    source "$agent_env_file" > /dev/null 2>&1
+fi
+
+# Uncomment this line if you want to auto-add a key
+#[ -f ~/.ssh/id_rsa ] && ssh-add -l &>/dev/null || ssh-add ~/.ssh/id_rsa &>/dev/null
+
+# --------------------------------------
+# If not running interactively, don't continue
+# --------------------------------------
 case $- in
     *i*) ;;
       *) return;;
 esac
 
-
-
+# --------------------------
+# History Settings
+# --------------------------
 HISTCONTROL=ignoreboth
 HISTSIZE=100000
 HISTFILESIZE=200000
 shopt -s histappend
 shopt -s checkwinsize
 
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+# --------------------------
+# Lesspipe
+# --------------------------
+command -v lesspipe >/dev/null && eval "$(SHELL=/bin/sh lesspipe)"
 
-if [ -z "$SSH_AUTH_SOCK" ] ; then
-      eval `ssh-agent -s`
-fi
-
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# set variable identifying the chroot you work in (used in the prompt below)
+# --------------------------
+# Debian chroot info
+# --------------------------
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+# --------------------------
+# Git Branch in Prompt
+# --------------------------
+parse_git_branch() {
+  git rev-parse --abbrev-ref HEAD 2>/dev/null | sed 's/.*/ (\0)/'
+}
+
+# Color prompt with git branch
 if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
+  if command -v tput >/dev/null && tput setaf 1 >&/dev/null; then
+    color_prompt=yes
+  fi
 fi
 
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+if [ "$color_prompt" = yes ]; then
+  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[33m\]$(parse_git_branch)\[\033[00m\]\$ '
+else
+  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git_branch)\$ '
+fi
 
-# If this is an xterm set the title to user@host:dir
+# Set xterm window title
 case "$TERM" in
-xterm*|rxvt*)
-   PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
+  xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
 esac
 
-# colored GCC warnings and errors
+# --------------------------
+# Colors and Aliases
+# --------------------------
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# some more ls aliases
-#alias gpg='gpg2'
-#-------------------
-# Personnal Aliases
-#-------------------
 
 alias rm='rm -i'
 alias cp='cp -i'
@@ -77,22 +103,23 @@ alias ..='cd ..'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias ssh="ssh -v"
-alias ls="ls --color=always"
+alias ssh='ssh -v'
+alias ls='ls --color=always'
 alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
-alias tg="terragrunt"
-alias tf="terraform"
-alias kc="kubectl"
+alias pca='pre-commit run --all-files'
+alias tg='terragrunt'
+alias tf='terraform'
+alias kc='kubectl'
 
+# --------------------------
+# Custom Aliases File
+# --------------------------
+[ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
+# --------------------------
+# Bash Completion
+# --------------------------
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
@@ -101,4 +128,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export GPG_TTY=/dev/pts/0
+# --------------------------
+# Node Version Manager
+# --------------------------
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
