@@ -116,3 +116,4 @@ stat ~/.bashrc \
 
 # This may warrant its own config eventually
 git config --global push.autoSetupRemote true
+git config --global push.default current
